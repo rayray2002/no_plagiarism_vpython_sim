@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: jupyter-server-proxy
+Version: 1.5.0
+Summary: Jupyter server extension to supervise and proxy web services
+Home-page: https://github.com/jupyterhub/jupyter-server-proxy
+Author: Ryan Lovett & Yuvi Panda
+Author-email: rylo@berkeley.edu
+License: BSD 3-Clause
+Platform: UNKNOWN
+Classifier: Framework :: Jupyter
+Requires-Python: >=3.5
+Requires-Dist: notebook
+Requires-Dist: simpervisor (>=0.2)
+Requires-Dist: aiohttp
+
+UNKNOWN
+
+

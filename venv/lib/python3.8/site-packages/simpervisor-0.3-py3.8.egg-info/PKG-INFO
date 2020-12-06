@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: simpervisor
+Version: 0.3
+Summary: Simple async process supervisor
+Home-page: https://github.com/yuvipanda/simpervisor
+Author: Yuvi Panda
+Author-email: yuvipanda@gmail.com
+License: BSD 3-Clause
+Description: UNKNOWN
+Platform: UNKNOWN
