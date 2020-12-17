@@ -135,7 +135,8 @@ while True:
             total_K += np.sum(K)
         T = 0.5 * m * total_K / (3 * N * k / 2)
         P = (p_sum / (1000 * dt)) / (
-                2 * (L ** 2 + container.width * container.length + container.height * container.length))
+                2 * (
+                container.height * container.width + container.width * container.length + container.height * container.length))
         p_sum = 0
         V = container.height * container.width * container.length
         print("T = %.2f, P = %.2E, V = %.2E, PV = %.2E, NkT = %.2E, PV^gamma = %.2E" % (

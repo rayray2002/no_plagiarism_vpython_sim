@@ -5,7 +5,8 @@ A, N = 0.10, 50
 m, k, d = 0.1, 10.0, 0.4
 dt, avg_count = 0.0003, 10
 
-g = graph(title='Dispersion Relationship', width=1200, height=600, align='left', xtitle="n", ytitle="Angular Frequency")
+g = graph(title='Dispersion Relationship', width=1200, height=600, align='left', xtitle="Wavevector",
+          ytitle="Angular Frequency")
 p = gcurve(graph=g, color=color.blue, width=2)
 
 
@@ -36,4 +37,4 @@ for n in arange(1.0, N // 2, 1.0):
 
     T = t / avg_count
     print(n, 2.0 * pi / T)
-    p.plot(n, 2.0 * pi / T)
+    p.plot(Wavevector, 2.0 * pi / T)
