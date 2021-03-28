@@ -51,7 +51,7 @@ for i in range(0, N):
 
 # find Q, find C_nonideal = Q/(delta V)
 Q = 0
-delta = 1
+delta = 5
 min_x = int(N / 2) - int(L / h / 2.0) - delta
 max_x = int(N / 2) + int(L / h / 2.0) + delta
 min_y = int(N / 2) - int(d / h / 2.0) - delta
@@ -68,5 +68,6 @@ C_nonideal = Q / V0
 
 # Compare C_nonideal to C_ideal
 C_ideal = epsilon * (L / d)
-print("Ideal: " + str(C_ideal) + " F/m, Non-Ideal: " + str(C_nonideal) + " F/m, Error: " + str(
-    -(C_ideal - C_nonideal) / C_ideal * 100) + "%")
+print("Ideal: %.3e" % C_ideal)
+print("non-Ideal: %.3e" % C_nonideal)
+print("error: %.3f" % ((C_ideal - C_nonideal) / C_ideal * -100))
