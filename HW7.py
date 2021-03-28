@@ -70,4 +70,4 @@ C_nonideal = Q / V0
 C_ideal = epsilon * (L / d)
 print("Ideal: %.3e" % C_ideal)
 print("non-Ideal: %.3e" % C_nonideal)
-print("error: %.3f" % ((C_ideal - C_nonideal) / C_ideal * -100))
+print("error percentage: %.3f" % ((C_ideal - C_nonideal) / C_ideal * -100))
