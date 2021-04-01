@@ -48,9 +48,9 @@ while True:
     total_c += sum(result)
     # print(total_c)
 
-    X, Y, Z = np.random.normal(0, vrms, sum(result)), np.random.normal(0, vrms, sum(result)), np.random.normal(0, vrms,
-                                                                                                               sum(
-                                                                                                                   result))
+    X, Y, Z = np.random.normal(0, vrms, sum(result)), \
+              np.random.normal(0, vrms, sum(result)), \
+              np.random.normal(0, vrms, sum(result))
     v_array[result] = np.transpose([X, Y, Z])
 
     vv += a_to_v(np.sum(v_array, axis=0) / N)
