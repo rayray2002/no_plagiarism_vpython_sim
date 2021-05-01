@@ -57,7 +57,7 @@ while True:
 
     if int(t / dt) % 2000 == 0:
         tau = (t * N) / total_c
-        print(tau, vv / (t / dt), q * E * tau / m)
+        print(tau, mag(vv / (t / dt)), q * E * tau / m)
 
     vd_ball.pos = vv / (t / dt)
 
