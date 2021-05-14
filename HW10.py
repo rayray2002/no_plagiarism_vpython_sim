@@ -35,9 +35,9 @@ while t <= 20 * T:
         i_the = 0.40156 * sin(2 * pi * fd * t - 70 / 180 * pi)
         if stage == 0:
             if t >= 9 * T:
-                print("t=9T compare i to theory:")
-                print("i=", i, "A, i_theory:", i_the, 'A')
-                print("error:", (i - i_the) / i_the * 100, '%')
+                print("t = 9T Compare i to theory:")
+                print("i =", i, "A, i_theory:", i_the, 'A')
+                print("Error:", (i - i_the) / i_the * 100, '%')
                 stage = 1
     else:
         if stage == 1:
@@ -45,7 +45,7 @@ while t <= 20 * T:
             stage = 2
         elif stage == 2:
             if E <= E0 / 10:
-                print("decay time:", t - 12 * T, 's')
+                print("Decay time:", t - 12 * T, 's')
                 stage = 3
         v = 0
         i_the = 0
