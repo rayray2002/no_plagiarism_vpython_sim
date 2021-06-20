@@ -32,7 +32,7 @@ E_t = gcurve(color=color.red, graph=scene2)
 while t <= 20 * T:
     if t < 12 * T:
         v = 36 * sin(2 * pi * fd * t)
-        i_the = 0.40156 * sin(2 * pi * fd * t - 70 / 180 * pi)
+        i_the = 0.40156 * sin(2 * pi * fd * t - 70 / 180 * pi)  # 70 degree is the phase constant
         if stage == 0:
             if t >= 9 * T:
                 print("t = 9T Compare i to theory:")

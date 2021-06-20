@@ -4,7 +4,6 @@ from numpy import *
 N = 100
 R, lamda = 1.0, 500E-9
 d = 100E-6
-k = 2 * pi / lamda
 
 dx, dy = d / N, d / N
 
@@ -16,40 +15,44 @@ scene1.ambient, scene2.ambient = color.gray(0.99), color.gray(0.99)
 side = linspace(-0.01 * pi, 0.01 * pi, N)
 x, y = meshgrid(side, side)
 
-side_source = linspace(-d / 2, d / 2, N)
-pos_x, pos_y = meshgrid(side_source, side_source)
+aperture_side = linspace(-d / 2, d / 2, N)
+X, Y = meshgrid(aperture_side, aperture_side)
 
-mask = ((pos_x ** 2 + pos_y ** 2) <= ((d / 2) ** 2))
+valid_mask = (X ** 2 + Y ** 2) <= ((d / 2) ** 2)
+k = 2 * pi / lamda
+k_x = k * x / R
+k_y = k * y / R
 
 E_field = zeros((N, N))
 for i in range(N):
     for j in range(N):
-        E_field[i, j] = sum(cos(k * x[i, j] * pos_x + k * y[i, j] * pos_y) * dx * dy * mask)
+        E_field[i, j] = sum(cos(k_x[i, j] * X + k_y[i, j] * Y) * dx * dy * valid_mask) / R
 
-Inte = abs(E_field) ** 2
-maxI = amax(Inte)
+intensity = abs(E_field) ** 2
+maxI = amax(intensity)
 for i in range(N):
     for j in range(N):
         box(canvas=scene1, pos=vector(i * dx, j * dy, 0), length=dx, height=dy, width=dx,
-            color=vector(Inte[i, j] / maxI, Inte[i, j] / maxI, Inte[i, j] / maxI))
+            color=vector(intensity[i, j] / maxI, intensity[i, j] / maxI, intensity[i, j] / maxI))
 
-theta = 0
-pre_pre = Inte[49, 49]
-pre = Inte[49, 50]
-for i in range(51, N):
-    now = Inte[49, i]
-    if (pre < pre_pre and pre < now):
-        theta = -0.01 * pi + (i - 1) * (0.02 * pi) / N
-        break
-    pre = pre_pre
-    pre = now
-
-print("sim:", theta)
-print("theory:", 1.22 * lamda / d)
-
-Inte = abs(E_field)
-maxI = amax(Inte)
+intensity = abs(E_field)
+maxI = amax(intensity)
 for i in range(N):
     for j in range(N):
         box(canvas=scene2, pos=vector(i * dx, j * dy, 0), length=dx, height=dy, width=dx,
-            color=vector(Inte[i, j] / maxI, Inte[i, j] / maxI, Inte[i, j] / maxI))
+            color=vector(intensity[i, j] / maxI, intensity[i, j] / maxI, intensity[i, j] / maxI))
+
+intensity = abs(E_field) ** 2
+current_intensity = intensity[50][50]
+current_pos = 0
+
+for i in range(50, N):
+    if intensity[i][50] <= current_intensity:
+        current_intensity = intensity[i][50]
+        current_pos = i
+    else:
+        break
+
+theta = -0.01 * pi + current_pos * (0.02 * pi) / N
+print("sim:", theta)
+print("theory:", 1.22 * lamda / d)
